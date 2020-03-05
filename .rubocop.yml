@@ -1,2 +1,17 @@
 inherit_from:
   - .rubocop_airbnb.yml
+
+AllCops:
+  Exclude:
+    - "Gemfile"
+    - "Rakefile"
+    - "Capfile"
+    - "Guardfile"
+    - "db/**/*"
+    - "scripts/**/*"
+    - "misc/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "bin/**/*"
+    - "config.ru"
+    - "node_modules/**/*"
