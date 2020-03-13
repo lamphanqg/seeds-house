@@ -30,7 +30,7 @@ class SpeciesController < ApplicationController
 
     respond_to do |format|
       if @species.save
-        format.html { redirect_to @species, notice: 'Species was successfully created.' }
+        format.html { redirect_to @species, notice: "Species was successfully created." }
       else
         format.html { render :new }
       end
@@ -41,7 +41,7 @@ class SpeciesController < ApplicationController
   def update
     respond_to do |format|
       if @species.update(species_params)
-        format.html { redirect_to @species, notice: 'Species was successfully updated.' }
+        format.html { redirect_to @species, notice: "Species was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -52,7 +52,7 @@ class SpeciesController < ApplicationController
   def destroy
     @species.destroy
     respond_to do |format|
-      format.html { redirect_to species_index_url, notice: 'Species was successfully destroyed.' }
+      format.html { redirect_to species_index_url, notice: "Species was successfully destroyed." }
     end
   end
 

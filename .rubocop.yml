@@ -1,5 +1,4 @@
-inherit_from:
-  - .rubocop_airbnb.yml
+require: rubocop-rails
 
 AllCops:
   Exclude:
@@ -15,3 +14,32 @@ AllCops:
     - "bin/**/*"
     - "config.ru"
     - "node_modules/**/*"
+    - "config/environments/*"
+Layout/DotPosition:
+  EnforcedStyle: leading
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/LineLength:
+  Max: 150
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: aligned
+Style/Documentation:
+  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+Style/Lambda:
+  EnforcedStyle: literal
+Style/RedundantInterpolation:
+  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/SymbolArray:
+  EnforcedStyle: brackets
