@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seeds</h1>
+
+<%= link_to 'New Seed', new_seed_path, class: "btn btn-primary", style: "margin-bottom: 2em;" %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Species</th>
+      <th>Family</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seeds.each do |seed| %>
+      <tr>
+        <td><%= image_slider(seed) %></td>
+        <td><%= seed.name %></td>
+        <td><%= seed.species.name %></td>
+        <td><%= seed.species.family.name %></td>
+        <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
+        <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Seed', new_seed_path, class: "btn btn-primary" %>
