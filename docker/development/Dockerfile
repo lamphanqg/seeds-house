@@ -13,16 +13,20 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get update && \
     apt-get install -y nodejs yarn
 
-RUN mkdir /seeds-house
+RUN mkdir -p /root/.ssh && \
+    ssh-keyscan github.com > /root/.ssh/known_hosts
+COPY ./id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa && \
+    eval `ssh-agent -s` && \
+    ssh-add /root/.ssh/id_rsa
+RUN git clone git@github.com:lamphanqg/seeds-house.git /seeds-house
+
 WORKDIR /seeds-house
 
-COPY Gemfile /seeds-house/Gemfile
-COPY Gemfile.lock /seeds-house/Gemfile.lock
-
 RUN bundle install
-COPY . /seeds-house
 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
+RUN cp /seeds-house/entrypoint.sh /usr/bin/ && \
+    chmod +x /usr/bin/entrypoint.sh
+
 ENTRYPOINT ["entrypoint.sh"]
