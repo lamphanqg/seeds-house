@@ -17,15 +17,15 @@ test:
   password: postgres
   host: db
 
-staging:
+server: &server
   <<: *default
   host: <%= ENV["POSTGRESQL_HOST"] %>
   username: <%= ENV["POSTGRESQL_USERNAME"] %>
   password: <%= ENV["POSTGRESQL_PASSWORD"] %>
   database: <%= ENV["POSTGRESQL_DB"] %>
 
+staging:
+  <<: *server
+
 production:
-  <<: *default
-  database: seeds_house_production
-  username: seeds_house
-  password: <%= ENV['SEEDS_HOUSE_DATABASE_PASSWORD'] %>
+  <<: *server
