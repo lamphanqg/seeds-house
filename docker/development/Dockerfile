@@ -13,13 +13,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get update && \
     apt-get install -y nodejs yarn
 
-RUN mkdir -p /root/.ssh && \
-    ssh-keyscan github.com > /root/.ssh/known_hosts
-COPY ./id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa && \
-    eval `ssh-agent -s` && \
-    ssh-add /root/.ssh/id_rsa
-RUN git clone git@github.com:lamphanqg/seeds-house.git /seeds-house
+RUN mkdir -p /seeds-house
+COPY . /seeds-house
 
 WORKDIR /seeds-house
 
